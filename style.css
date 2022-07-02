@@ -1,0 +1,22 @@
+body {
+  width: 960px;
+  margin: 50 auto;
+}
+
+.block {
+  font-size: 100px;
+  margin: 5px;
+  width: 180px;
+  height: 260px;
+  color: 'black';
+  border: 1px solid black;
+  content-visibility: hidden;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+}
