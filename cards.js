@@ -15,7 +15,6 @@ class Cards {
   }
 
   select(cardId) {
-    console.log(this.#cards[cardId]);
     const card = this.#cards[cardId];
     this.#selected.push(card);
   }
@@ -99,7 +98,7 @@ const validateCardPair = (cards, blocks) => {
   setTimeout(() => {
     cards.areSame() ? removeCards(cards, blocks) : hideCards(cards, blocks);
     cards.resetSelected();
-  }, 100);
+  }, 200);
 };
 
 const updateHtml = (blocks, cards) => {
@@ -112,7 +111,7 @@ const updateHtml = (blocks, cards) => {
 const clickEvent = (blocks, cards) => {
   for (const block of blocks) {
     block.addEventListener('click', () => {
-      if (cards.isAlreadySelected(block.id)) {
+      if (cards.isAlreadySelected(block.id) || cards.isPair()) {
         return;
       }
       cards.select(block.id);
