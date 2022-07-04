@@ -18,7 +18,6 @@ class Cards {
     console.log(this.#cards[cardId]);
     const card = this.#cards[cardId];
     this.#selected.push(card);
-    card.flip();
   }
 
   resetSelected() {
@@ -46,8 +45,6 @@ class Card {
   constructor(id, symbol) {
     this.#id = id;
     this.#symbol = symbol;
-    this.#content = '';
-    this.#isFlipped = false;
   }
 
   isSame(anotherCard) {
@@ -55,14 +52,8 @@ class Card {
     return symbol === this.#symbol;
   }
 
-  flip() {
-    this.#content = this.#symbol;
-    this.#isFlipped = true;
-  }
-
   remove() {
     this.#symbol = '';
-    this.#content = '';
   }
 
   getInfo() {
@@ -139,16 +130,14 @@ const generateHtml = (cards) => {
 };
 
 const createCards = () => {
-  const card1 = new Card(0, 'X');
-  const card2 = new Card(1, 'O');
-  const card3 = new Card(2, 'O');
-  const card4 = new Card(3, 'X');
-  return new Cards(card1, card2, card3, card4);
+  const symbols = 'XORAXPAOPREE'.split('');
+  const cards = symbols.map((symbol, id) => new Card(id, symbol));
+  return new Cards(...cards);
 };
 
 const main = () => {
   window.onload = () => {
-    const cards = createCards();
+    const cards = createCards(6);
     generateHtml(cards);
     const blocks = document.getElementsByClassName('block');
     clickEvent(blocks, cards);
