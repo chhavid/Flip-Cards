@@ -3,6 +3,12 @@ body {
   margin: 50 auto;
 }
 
+#container {
+  width: 400;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .block {
   font-size: 100px;
   margin: 5px;
@@ -10,13 +16,12 @@ body {
   height: 260px;
   color: 'black';
   border: 1px solid black;
-  content-visibility: hidden;
   background-color: pink;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.wrapper {
+.row {
   display: flex;
 }
