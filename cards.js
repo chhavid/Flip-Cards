@@ -139,7 +139,7 @@ const generateHtml = (cards) => {
 };
 
 const createCards = () => {
-  const symbols = 'XORAXPAOPREE'.split('');
+  const symbols = '🌼 🕶 ☀️ 🌹 🌼 😊 🌹 🕶 P ☀️ 😊 😊'.split(' ');
   const cards = symbols.map((symbol, id) => new Card(id, symbol));
   return new Cards(...cards);
 };
