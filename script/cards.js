@@ -43,6 +43,13 @@ class Cards {
       return id === +newId;
     });
   }
+
+  areAllMatched() {
+    return this.#cards.every((card) => {
+      const { symbol } = card.getInfo();
+      return symbol === '';
+    });
+  }
 }
 
 class Card {
@@ -115,6 +122,14 @@ const clickEvent = (blocks, cards) => {
         return;
       }
       cards.select(block.id);
+      console.log(cards.areAllMatched());
+      if (cards.areAllMatched()) {
+        console.log('----');
+        const container = document.getElementById('container');
+        const overBlock = document.createElement('div');
+        overBlock.innerText = 'GAME OVER';
+        container.after(overBlock);
+      }
       updateHtml(blocks, cards);
       if (cards.isPair()) {
         validateCardPair(cards, blocks);
@@ -139,7 +154,7 @@ const generateHtml = (cards) => {
 };
 
 const createCards = () => {
-  const symbols = '🌼 🕶 ☀️ 🌹 🌼 😊 🌹 🕶 🚗 ☀️ 🚗 😊'.split(' ');
+  const symbols = '🌼 🕶 ☀️ 🌹 🌼 😊 🌹 🕶 🚗 ☀️ 😊 🚗'.split(' ');
   const cards = symbols.map((symbol, id) => new Card(id, symbol));
   return new Cards(...cards);
 };
